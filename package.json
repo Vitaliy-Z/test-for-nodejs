@@ -1,0 +1,43 @@
+{
+  "name": "intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon ./src/bin/server.js",
+    "start": "cross-env NODE_ENV=production netlify-lambda serve ./src/bin/server.js",
+    "dev:debug": "node --inspect ./src/bin/server.js",
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint --fix **/*.js",
+    "build": "netlify-lambda build src",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.2.1",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "16.0.3",
+    "express": "4.18.2",
+    "express-validator": "6.14.2",
+    "joi": "^17.7.0",
+    "lowdb": "^5.0.5",
+    "netlify-cli": "^12.5.0",
+    "netlify-lambda": "^2.0.15",
+    "serverless-http": "^3.1.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-config-standart": "^0.2.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "morgan": "1.10.0",
+    "nodemon": "2.0.20"
+  }
+}

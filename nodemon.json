@@ -1,0 +1,3 @@
+{
+  "ignore": ["node_nodules", "model/cats.json"]
+}
