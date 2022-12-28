@@ -1,26 +1,14 @@
-// Remember to set type: module in package.json or use .mjs extension
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
+dotenv.config();
 
-import { Low } from "lowdb";
-import { JSONFile } from "lowdb/node";
+const URL_DB = process.env.URL_DB;
+const db = MongoClient.connect(URL_DB, { maxPoolSize: 5 });
 
-// File path
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const file = join(__dirname, "cats.json");
-
-// Configure lowdb to write to JSONFile
-const adapter = new JSONFile(file);
-const db = new Low(adapter);
-
-// Read data from JSON file, this will set db.data content
-await db.read();
-
-// If db.json doesn't exist, db.data will be null
-// Use the code below to set default data
-// db.data = db.data || { posts: [] } // For Node < v15.x
-db.data ||= { cats: [] };
-
-db.write();
+process.on("SIGINT", async () => {
+  db.close();
+  console.log("Conection closed and app termination");
+  process.exit(1);
+});
 
 export default db;
