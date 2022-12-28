@@ -4,7 +4,6 @@ import cors from "cors";
 
 import weatherRouter from "./routers/api/weather.js";
 import catsRouter from "./routers/api/cats.js";
-import netlifyRouter from "./routers/api/netlify.js";
 
 //запуск Express
 const app = express();
@@ -16,9 +15,6 @@ app.get("/", (_req, res) => res.send("Hello World"));
 app.use(logger("dev"));
 app.use(cors());
 app.use(express.json());
-
-// for netlify
-app.use("/.netlify/frontmentor/api", netlifyRouter);
 
 //oбробка Router
 app.use("/weather", weatherRouter);
