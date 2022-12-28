@@ -10,7 +10,7 @@
     "dev:debug": "node --inspect ./src/bin/server.js",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint --fix **/*.js",
-    "build": "netlify build src",
+    "build": "netlify-lambda build ./src/bin",
     "predeploy": "npm run build",
     "deploy": "netlify deploy -p"
   },
@@ -39,5 +39,14 @@
     "eslint-plugin-promise": "^6.1.1",
     "morgan": "1.10.0",
     "nodemon": "2.0.20"
+  },
+  "resolutions": {
+    "@babel/core": "7.19.6",
+    "@babel/generator": "7.19.6",
+    "@babel/compat-data": "7.19.4",
+    "@babel/helper-compilation-targets": "7.19.3",
+    "@babel/helper-create-class-features-plugin": "7.19.0",
+    "@babel/helper-module-transforms": "7.19.6",
+    "babel-loader": "8.2.5"
   }
 }

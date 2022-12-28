@@ -1,9 +1,10 @@
 import express from "express";
 import logger from "morgan";
 import cors from "cors";
+import serverless from "serverless-http";
 
 import weatherRouter from "./routers/api/weather.js";
-import catsRouter from "./routers/api/cats.js";
+
 import netlifyRouter from "./routers/api/netlify.js";
 
 //запуск Express
@@ -22,7 +23,7 @@ app.use("/.netlify/frontmentor/api", netlifyRouter);
 
 //oбробка Router
 app.use("/weather", weatherRouter);
-app.use("/cats", catsRouter);
+
 
 // для будь-яких інших путів
 app.use((_req, res) => res.status(404).send({ msg: "Not Found" }));
@@ -30,5 +31,9 @@ app.use((_req, res) => res.status(404).send({ msg: "Not Found" }));
 app.use((err, _req, res, _next) => {
   res.status(err.status || 500).send({ msg: err.message });
 });
+
+export async function handler() {
+  serverless(app);
+}
 
 export default app;
