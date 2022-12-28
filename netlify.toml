@@ -1,4 +1,4 @@
 [build]
   command = "npm run build"
-  functions = "front" #  netlify-lambda reads this
-  publish = "build"
+  functions = "frontmentor" #  netlify-lambda reads this
+  publish = "frontmentor"

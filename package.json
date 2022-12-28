@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon ./src/bin/server.js",
-    "start": "cross-env NODE_ENV=production node ./src/bin/server.js",
+    "start": "cross-env NODE_ENV=production netlify-lambda serve ./src/bin",
     "dev:debug": "node --inspect ./src/bin/server.js",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint --fix **/*.js",
