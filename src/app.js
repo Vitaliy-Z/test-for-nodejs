@@ -2,7 +2,6 @@ import express from "express";
 import logger from "morgan";
 import cors from "cors";
 
-import weatherRouter from "./routers/api/weather.js";
 import catsRouter from "./routers/api/cats.js";
 
 //запуск Express
@@ -17,7 +16,6 @@ app.use(cors());
 app.use(express.json());
 
 //oбробка Router
-app.use("/weather", weatherRouter);
 app.use("/cats", catsRouter);
 
 // для будь-яких інших путів
